@@ -23,9 +23,8 @@ const policies = {
     },
     admin(user, {can}){
         // can('manage', 'all');
-        can('view', 'staff', {company: user.company});
-        can('create', 'staff-profile', {company: user.company});
-        can('update', 'staff-profile', {company: user.company});
+        can('view', 'staff');
+        can('create', 'staff-profile');
         can('view', 'staff-detail', {company: user.company});
         can('delete', 'staff', {company: user.company});
         can('update', 'permit', {company: user.company});

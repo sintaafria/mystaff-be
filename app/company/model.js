@@ -15,7 +15,7 @@ const companySchema = Schema({
     },
     head_name: {
         type: String,
-        required: [true, 'Kepala instansi atau perusahaan harus diisi']
+        required: [true, 'nama admin perusahaan harus diisi']
     },
 }, { timestamps: true });
 

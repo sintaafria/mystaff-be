@@ -37,6 +37,15 @@ const staffDetail = async (req, res, next) => {
 const destroy = async (req, res, next) => {
     try {
         const { id } = req.params; 
+        let user = await User.findById(id)
+        let subjectProfile = subject('staff-profile', {company: user.company});
+        let policy = policyFor(req.user);
+        if(!policy.can('delete', subjectProfile)) {
+            return res.json({
+                error: 1,
+                message: 'You are not allowed to delete this resource'
+            })
+        }
         const staffProfile = await staffProfile.findOneAndDelete({user: id, company: req.user.company})
         const user = await User.findByIdAndDelete(id).select('-token')
         return res.json(staffProfile);

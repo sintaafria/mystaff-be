@@ -36,7 +36,7 @@ const companyRegister = async (req, res, next) => {
     }
 }
 
-const register = async(req, res, next) => {
+const registerStaff = async(req, res, next) => {
     try {
         const payload = req.body;
         let user = await new User(payload);
@@ -114,7 +114,7 @@ const me = (req, res, next) => {
 }
 
 module.exports = {
-    register,
+    registerStaff,
     companyRegister,
     login,
     localStrategy,
