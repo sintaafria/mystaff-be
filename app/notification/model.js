@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const notifSchema = Schema({
-    status: {
-        type: String,
-        enum: ['belum dibaca', 'sudah dibaca']
+    read: {
+        type: Boolean,
+        default: false
     },
     permit: {
         type: Schema.Types.ObjectId,

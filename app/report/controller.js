@@ -22,8 +22,8 @@ const update = async (req, res, next) => {
     try{
         const payload = req.body;
         const { id } = req.params;
-        const report = await Report.findByIdAndUpdate(id, payload);
-        let subjectReport = subject('report', {user_id: report.user});
+        let report = await Report.findById(id)
+        const subjectReport = subject('report', {user_id: report.user});
         let policy = policyFor(req.user);
         if(!policy.can('update', subjectReport)) {
             return res.json({
@@ -31,7 +31,7 @@ const update = async (req, res, next) => {
                 message: 'You are not allowed to modify this resource'
             })
         }
-        await report.save();
+        report = await Report.findByIdAndUpdate(id, payload);
         return res.json(report);
     } catch(err) {
         if(err && err.name === 'ValidationError'){

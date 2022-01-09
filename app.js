@@ -9,6 +9,8 @@ const authRoute = require('./app/auth/router');
 const userRoute = require('./app/user/router');
 const staffProfileRoute = require('./app/staff-profile/router');
 const reportRoute = require('./app/report/router');
+const permitRoute = require('./app/permit/router');
+const notifRoute = require('./app/notification/router');
 
 var app = express();
 
@@ -28,6 +30,8 @@ app.use('/auth', authRoute);
 app.use('/api', userRoute);
 app.use('/api', staffProfileRoute);
 app.use('/api', reportRoute);
+app.use('/api', permitRoute);
+app.use('/api', notifRoute);
 
 app.use('/', (req, res) => {
   res.render('index', {

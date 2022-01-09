@@ -15,7 +15,11 @@ const policies = {
     staff(user, {can}) {
         can('update', 'staff-profile', {user_id: user._id});
         can('view', 'staff-profile', {user_id: user._id});
-        can('create', 'report')
+        can('create', 'report');
+        can('create', 'permit');
+        can('view', 'permit');
+        can('view', 'notifications');
+        can('read', 'notification')
     },
     admin(user, {can}){
         // can('manage', 'all');
@@ -24,6 +28,9 @@ const policies = {
         can('update', 'staff-profile', {company: user.company});
         can('view', 'staff-detail', {company: user.company});
         can('delete', 'staff', {company: user.company});
+        can('update', 'permit', {company: user.company});
+        can('view', 'notifications');
+        can('read', 'notification')
     }
 }
 
